@@ -75,6 +75,7 @@ module.exports.analytics = async function (req,resp) {
         resp.status(200).json({
             average,chart
         })
+
     } catch (e) {
         errorHandler(resp, e)
     }
