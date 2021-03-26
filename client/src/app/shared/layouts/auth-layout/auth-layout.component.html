@@ -1,0 +1,21 @@
+<!--обложка для страницы Вход и Регистрация-->
+<nav>
+  <div class="nav-wrapper grey darken-1">
+    <a routerLink="/" class="brand-logo">Newborn</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- елси данный роутер активный то будем добавлять класс активности -->
+      <li routerLinkActive="active">
+        <a routerLink="login">Вход</a>
+      </li>
+      <li routerLinkActive="active">
+        <!-- NavLink как в реакте меняет url вверху и происходит рендер компонентов -->
+        <a routerLink="register">Регистрация</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="auth-block">
+  <!-- подставление нужного компонента по роуту  -->
+  <router-outlet></router-outlet>
+</div>

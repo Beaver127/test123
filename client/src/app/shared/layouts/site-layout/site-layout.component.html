@@ -1,0 +1,49 @@
+<ul class="sidenav sidenav-fixed a-sidenav">
+  <h4>Newborn</h4>
+<!--  средствами angular пробегаемся по всем ссылкам из массива который
+определён в нашем компонете routerLinkActive - при активности добавление класса -->
+  <li class="bold" *ngFor="let link of links"
+  routerLinkActive="active"
+  >
+<!--    здесь выводим сам url ссылки и название -->
+    <a [routerLink]="[link.url]" class="waves-effect waves-orange">
+      {{link.name}}
+    </a>
+  </li>
+
+<!--  вешаем события клика +передаем event для отмены редиректа через ссылку -->
+  <li class="bold last"><a href="#" class="waves-effect waves-orange"
+  (click)="logout($event)">Выйти</a></li>
+</ul>
+
+<main class="content">
+<!--  для динамеческого перерисовывания компонентов в зависимости от роутов -->
+  <router-outlet></router-outlet>
+</main>
+
+<!-- для того чтобы сделать ссылку на этот блок в ts для работы с ним в js
+помечаем через решетку название
+-->
+
+
+<!--указываем здесь на кнопках роуты нужные-->
+<div class="fixed-action-btn" #floating>
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">add</i>
+  </a>
+  <ul>
+    <li>
+      <a routerLink="/order" class="btn-floating green">
+        <i class="material-icons">assignment</i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/categories/new" class="btn-floating blue">
+        <i class="material-icons">list</i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<a id="menu" class="waves-effect waves-light btn btn-floating"><i class="material-icons">info</i></a>
+

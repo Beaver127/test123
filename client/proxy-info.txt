@@ -1,0 +1,44 @@
+Прокси
+__________________________________________
+Backend
+
+http://localhost:5000/api/auth/login
+http://localhost:5000/api/category
+__________________________________________
+Frontend
+
+/api/auth/login
+/api/category
+__________________________________________
+на фронтенде в папке client создаем файл proxy.conf.json:
+
+{
+//ловим все запросы начинающиеся на
+//для нашего апи
+  "/api/*": {
+    //перенаправляем по такому адресу
+    "target": "http://localhost:5000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  //для картинок
+  "/uploads/*": {
+    "target": "http://localhost:5000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
+
+так же в файле client/package.json:
+
+  "scripts": {
+    "ng": "ng",
+    //прописываем здесь наш прокси
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
